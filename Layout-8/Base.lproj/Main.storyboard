@@ -53,12 +53,8 @@
                                             <constraint firstItem="VEb-Hs-XpT" firstAttribute="leading" secondItem="XLO-IZ-cRY" secondAttribute="leading" constant="10" id="zvu-cz-mR8"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="icq-g8-Kug">
-                                        <rect key="frame" x="0.0" y="70" width="375" height="545"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFg-Ta-qjP">
-                                        <rect key="frame" x="0.0" y="615" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="615" width="376" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總金額：NT$300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33o-2J-QdN">
                                                 <rect key="frame" x="45" y="10" width="200" height="50"/>
@@ -70,7 +66,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXK-9v-QLj">
-                                                <rect key="frame" x="293" y="10" width="62" height="50"/>
+                                                <rect key="frame" x="294" y="10" width="62" height="50"/>
                                                 <color key="backgroundColor" red="1" green="0.98989497179999997" blue="0.54928983139999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="確認訂單"/>
                                             </button>
@@ -87,20 +83,24 @@
                                             <constraint firstItem="mXK-9v-QLj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="33o-2J-QdN" secondAttribute="trailing" constant="8" symbolic="YES" id="xwk-oN-a60"/>
                                         </constraints>
                                     </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kNd-bJ-Os5">
+                                        <rect key="frame" x="0.0" y="70" width="376" height="545"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="XLO-IZ-cRY" firstAttribute="top" secondItem="vvJ-xH-jH5" secondAttribute="top" id="2zW-Ty-3TQ"/>
-                                    <constraint firstItem="zFg-Ta-qjP" firstAttribute="top" secondItem="icq-g8-Kug" secondAttribute="bottom" id="5ZC-fo-u95"/>
-                                    <constraint firstAttribute="trailing" secondItem="icq-g8-Kug" secondAttribute="trailing" id="EQw-dg-i6r"/>
-                                    <constraint firstItem="icq-g8-Kug" firstAttribute="top" secondItem="XLO-IZ-cRY" secondAttribute="bottom" id="Elt-si-CFF"/>
+                                    <constraint firstAttribute="trailing" secondItem="XLO-IZ-cRY" secondAttribute="trailing" id="3PX-M0-wKg"/>
+                                    <constraint firstItem="zFg-Ta-qjP" firstAttribute="top" secondItem="kNd-bJ-Os5" secondAttribute="bottom" id="7Yh-Ym-xXM"/>
+                                    <constraint firstAttribute="trailing" secondItem="kNd-bJ-Os5" secondAttribute="trailing" id="H8Y-Fa-EGO"/>
                                     <constraint firstItem="zFg-Ta-qjP" firstAttribute="leading" secondItem="vvJ-xH-jH5" secondAttribute="leading" id="Kiu-lF-7xl"/>
-                                    <constraint firstItem="icq-g8-Kug" firstAttribute="leading" secondItem="vvJ-xH-jH5" secondAttribute="leading" id="Mfc-8o-OsW"/>
+                                    <constraint firstItem="kNd-bJ-Os5" firstAttribute="top" secondItem="XLO-IZ-cRY" secondAttribute="bottom" id="NgZ-HQ-r2I"/>
+                                    <constraint firstItem="kNd-bJ-Os5" firstAttribute="leading" secondItem="vvJ-xH-jH5" secondAttribute="leading" id="OX7-zj-n0r"/>
                                     <constraint firstAttribute="trailing" secondItem="zFg-Ta-qjP" secondAttribute="trailing" id="Omc-hn-aih"/>
                                     <constraint firstItem="XLO-IZ-cRY" firstAttribute="leading" secondItem="vvJ-xH-jH5" secondAttribute="leading" id="RF5-tZ-atw"/>
+                                    <constraint firstItem="zFg-Ta-qjP" firstAttribute="top" secondItem="vvJ-xH-jH5" secondAttribute="top" constant="615" id="W7h-yI-mte"/>
                                     <constraint firstItem="XLO-IZ-cRY" firstAttribute="centerX" secondItem="vvJ-xH-jH5" secondAttribute="centerX" id="anM-E1-S1z"/>
-                                    <constraint firstItem="icq-g8-Kug" firstAttribute="centerX" secondItem="XLO-IZ-cRY" secondAttribute="centerX" id="cke-W9-VwD"/>
-                                    <constraint firstItem="icq-g8-Kug" firstAttribute="centerY" secondItem="vvJ-xH-jH5" secondAttribute="centerY" id="i0V-xc-D8a"/>
-                                    <constraint firstAttribute="bottom" secondItem="icq-g8-Kug" secondAttribute="bottom" constant="70" id="i8R-LN-pPE"/>
+                                    <constraint firstAttribute="bottom" secondItem="zFg-Ta-qjP" secondAttribute="bottom" id="ksv-bl-kdC"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
