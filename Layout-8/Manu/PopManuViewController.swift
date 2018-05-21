@@ -102,7 +102,6 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
             foodNumberSelected = 0
             print("1")
            
-            
         }
         
         if indexPath.row == 1{
