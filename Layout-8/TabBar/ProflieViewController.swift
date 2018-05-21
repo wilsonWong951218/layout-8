@@ -15,8 +15,9 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
     @IBOutlet weak var tableViewShop: UITableView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
-    
     var shopName = [String]()
+   lazy var shopFoodCount = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profilePic.layer.cornerRadius = 160/2
@@ -27,6 +28,18 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
         // Do any additional setup after loading the view.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let addShopName = segue.destination as! PopManuViewController
+        guard let shopNumber = tableViewShop.indexPathForSelectedRow?.row else {return}
+        addShopName.myShopName = shopName[shopNumber]
+        //addShopName.myShopFoodCount = shopFoodCount
+        //print(shopFoodCount)
+
+    }
+    
+    func getFoodCellCount(){
+    }
+    
     fileprivate func getDBvalueShop(){
         Database.database().reference().child("shopFOOD").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             print(snapshot.value ?? "")
@@ -35,8 +48,8 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
                 print("Food:", food.key)
                 self.shopName.append(food.key)
             }
-           
             self.tableViewShop.reloadData()
+            
         }) { (error) in
             print("Error:\(error)")
         }
@@ -90,15 +103,17 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = shopName[indexPath.row]
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let row = indexPath.row
-        if row == 0{
+//        Database.database().reference().child("shopFOOD").child(shopName[indexPath.row]).observeSingleEvent(of: .value) { (snapshot) in
+//            self.shopFoodCount = Int(snapshot.childrenCount)
+//            print("FristViewCount:",self.shopFoodCount)
+//        }
+
             performSegue(withIdentifier: "shopOneManu", sender: nil)
-        }
+      
     }
     
 

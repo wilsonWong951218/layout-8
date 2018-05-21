@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hMo-YT-i40">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v5z-La-t3b">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -349,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="288" y="263"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="eti-Ez-Ngh">
             <objects>
-                <viewController id="pex-tP-X4I" sceneMemberID="viewController">
+                <viewController id="pex-tP-X4I" customClass="LoginViewController" customModule="Layout_8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SBF-J5-BFM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,6 +400,16 @@
                                     <segue destination="hMo-YT-i40" kind="showDetail" id="6ko-C8-VsY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGb-qL-mfo">
+                                <rect key="frame" x="63" y="409" width="251" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="251" id="WSN-kx-mHj"/>
+                                    <constraint firstAttribute="height" constant="170" id="uY3-He-A6D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.58431372550000005" green="0.80000000000000004" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -412,9 +422,12 @@
                             <constraint firstItem="ZTK-Kg-StG" firstAttribute="leading" secondItem="mkI-zc-8G2" secondAttribute="leading" constant="39" id="JFx-28-nPr"/>
                             <constraint firstItem="69J-dS-eVF" firstAttribute="leading" secondItem="mkI-zc-8G2" secondAttribute="leading" constant="16" id="OIS-vt-AuA"/>
                             <constraint firstItem="fGf-sC-jyE" firstAttribute="centerX" secondItem="SBF-J5-BFM" secondAttribute="centerX" id="Qvz-3Y-hbU"/>
+                            <constraint firstItem="bGb-qL-mfo" firstAttribute="top" secondItem="9Gg-WA-Msu" secondAttribute="bottom" constant="50" id="Wla-YT-aqi"/>
                             <constraint firstItem="9Gg-WA-Msu" firstAttribute="trailing" secondItem="iSo-ii-6Mh" secondAttribute="trailing" id="bjf-oJ-xep"/>
+                            <constraint firstItem="mkI-zc-8G2" firstAttribute="trailing" secondItem="bGb-qL-mfo" secondAttribute="trailing" constant="61" id="cIs-sn-1A1"/>
                             <constraint firstItem="iSo-ii-6Mh" firstAttribute="leading" secondItem="mkI-zc-8G2" secondAttribute="leading" constant="39" id="gJF-38-t53"/>
                             <constraint firstItem="69J-dS-eVF" firstAttribute="bottom" secondItem="mkI-zc-8G2" secondAttribute="bottom" id="hSQ-69-hsZ"/>
+                            <constraint firstItem="bGb-qL-mfo" firstAttribute="leading" secondItem="mkI-zc-8G2" secondAttribute="leading" constant="63" id="kMF-Zu-kMK"/>
                             <constraint firstItem="iSo-ii-6Mh" firstAttribute="top" secondItem="ZTK-Kg-StG" secondAttribute="bottom" constant="18" id="tqL-zx-HuG"/>
                             <constraint firstItem="fGf-sC-jyE" firstAttribute="centerY" secondItem="SBF-J5-BFM" secondAttribute="centerY" constant="-254.5" id="w2z-hl-Ay8"/>
                             <constraint firstItem="9Gg-WA-Msu" firstAttribute="leading" secondItem="iSo-ii-6Mh" secondAttribute="leading" id="ybE-6a-dN9"/>
@@ -422,10 +435,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mkI-zc-8G2"/>
                     </view>
+                    <connections>
+                        <outlet property="emailText" destination="ZTK-Kg-StG" id="fKY-fP-zk0"/>
+                        <outlet property="errorLabel" destination="bGb-qL-mfo" id="691-PO-lMY"/>
+                        <outlet property="loginButton" destination="9Gg-WA-Msu" id="lQ4-5i-iS8"/>
+                        <outlet property="passwordText" destination="iSo-ii-6Mh" id="caS-Dh-KR1"/>
+                        <segue destination="v5z-La-t3b" kind="showDetail" identifier="loginShowTabBarController" id="6OP-SI-3pj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnq-qA-iCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2238" y="163"/>
+            <point key="canvasLocation" x="-2239.1999999999998" y="162.5615763546798"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="B0w-3h-vxP">
@@ -536,12 +556,12 @@
                         <outlet property="signUpButton" destination="xra-7f-rlT" id="kKZ-h8-krX"/>
                         <outlet property="userNameText" destination="PHN-mj-ZIL" id="wfM-ZU-xzI"/>
                         <outlet property="userPasswordText" destination="A9Y-d8-XoL" id="uIQ-TM-7LP"/>
-                        <segue destination="v5z-La-t3b" kind="showDetail" identifier="showTabBarController" id="dSG-mx-iqQ"/>
+                        <segue destination="v5z-La-t3b" kind="showDetail" identifier="SignUpShowTabBarController" id="dSG-mx-iqQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isc-qB-uAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1124" y="117"/>
+            <point key="canvasLocation" x="-1031" y="-267"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="6rf-Hv-2bO">
@@ -566,4 +586,7 @@
         <image name="menu-button-of-three-horizontal-lines" width="32" height="32"/>
         <image name="plus_photo" width="150" height="150"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6OP-SI-3pj"/>
+    </inferredMetricsTieBreakers>
 </document>

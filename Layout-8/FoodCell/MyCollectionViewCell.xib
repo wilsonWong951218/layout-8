@@ -39,15 +39,52 @@
                                 <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsS-NN-00o">
+                                <rect key="frame" x="8" y="128" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XlU-fz-4gL"/>
+                                    <constraint firstAttribute="width" constant="40" id="dYJ-Uy-Eyf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="-"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsK-0q-FmQ">
+                                <rect key="frame" x="98" y="128" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="AHb-Ka-J8S"/>
+                                    <constraint firstAttribute="height" constant="30" id="cOd-g7-YgE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="+"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAZ-Ba-XEV">
+                                <rect key="frame" x="48" y="128" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Hfq-M3-5Kj"/>
+                                    <constraint firstAttribute="width" constant="50" id="tWW-ly-zKl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rsK-0q-FmQ" firstAttribute="leading" secondItem="zAZ-Ba-XEV" secondAttribute="trailing" id="AsZ-5G-Bds"/>
+                            <constraint firstAttribute="bottom" secondItem="zAZ-Ba-XEV" secondAttribute="bottom" constant="42" id="Bkd-qL-hvS"/>
+                            <constraint firstItem="zAZ-Ba-XEV" firstAttribute="top" secondItem="dZj-Dv-KLI" secondAttribute="bottom" constant="8" id="DKe-33-udT"/>
+                            <constraint firstItem="wsS-NN-00o" firstAttribute="leading" secondItem="WgZ-G3-QRh" secondAttribute="leading" constant="8" id="E0v-XF-KvV"/>
+                            <constraint firstItem="zAZ-Ba-XEV" firstAttribute="leading" secondItem="wsS-NN-00o" secondAttribute="trailing" id="Gsv-kd-Maa"/>
                             <constraint firstItem="dZj-Dv-KLI" firstAttribute="leading" secondItem="WgZ-G3-QRh" secondAttribute="leading" id="Jjs-CV-9zF"/>
+                            <constraint firstItem="zAZ-Ba-XEV" firstAttribute="centerY" secondItem="wsS-NN-00o" secondAttribute="centerY" id="QRj-uP-XBa"/>
                             <constraint firstAttribute="trailing" secondItem="dZj-Dv-KLI" secondAttribute="trailing" constant="8" id="hWe-88-OYL"/>
+                            <constraint firstItem="rsK-0q-FmQ" firstAttribute="centerY" secondItem="zAZ-Ba-XEV" secondAttribute="centerY" id="hez-wE-dYN"/>
+                            <constraint firstItem="zAZ-Ba-XEV" firstAttribute="leading" secondItem="wsS-NN-00o" secondAttribute="trailing" id="llR-J0-Ycp"/>
                             <constraint firstItem="dZj-Dv-KLI" firstAttribute="top" secondItem="CC0-2f-g3J" secondAttribute="bottom" constant="8" id="pLw-GA-FgT"/>
                             <constraint firstItem="CC0-2f-g3J" firstAttribute="top" secondItem="WgZ-G3-QRh" secondAttribute="top" constant="70" id="rUC-Ht-7mi"/>
                             <constraint firstItem="CC0-2f-g3J" firstAttribute="leading" secondItem="WgZ-G3-QRh" secondAttribute="leading" id="rcD-g9-KQf"/>
                             <constraint firstAttribute="trailing" secondItem="CC0-2f-g3J" secondAttribute="trailing" constant="8" id="vdX-nC-7EG"/>
+                            <constraint firstAttribute="trailing" secondItem="rsK-0q-FmQ" secondAttribute="trailing" constant="12" id="zhK-29-Zqa"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -60,8 +97,11 @@
             </constraints>
             <size key="customSize" width="328" height="76"/>
             <connections>
+                <outlet property="addButton" destination="rsK-0q-FmQ" id="PXw-KL-O4M"/>
+                <outlet property="countLabel" destination="zAZ-Ba-XEV" id="1FU-JL-1O0"/>
                 <outlet property="lbName" destination="CC0-2f-g3J" id="ip8-49-0tG"/>
                 <outlet property="lbPrice" destination="dZj-Dv-KLI" id="t0x-zY-bgH"/>
+                <outlet property="subButton" destination="wsS-NN-00o" id="88g-5a-7YA"/>
             </connections>
             <point key="canvasLocation" x="-14" y="67"/>
         </collectionViewCell>

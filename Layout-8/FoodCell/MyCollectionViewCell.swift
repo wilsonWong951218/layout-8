@@ -12,8 +12,10 @@ class MyCollectionViewCell: UICollectionViewCell {
 
 
     @IBOutlet weak var lbName: UILabel!
-    
     @IBOutlet weak var lbPrice: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var subButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

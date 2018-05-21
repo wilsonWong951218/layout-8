@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E2125FAE20AF137400785619 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2125FAD20AF137400785619 /* MyCollectionViewCell.swift */; };
 		E2125FB020AF137A00785619 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2125FAF20AF137A00785619 /* MyCollectionViewCell.xib */; };
+		E2125FB520AFE95300785619 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2125FB420AFE95300785619 /* LoginViewController.swift */; };
 		E21E5771209DE36E0052325F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21E5770209DE36E0052325F /* AppDelegate.swift */; };
 		E21E5773209DE36E0052325F /* PopManuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21E5772209DE36E0052325F /* PopManuViewController.swift */; };
 		E21E5776209DE36E0052325F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21E5774209DE36E0052325F /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		D09BB94C54AF76DE44AF7676 /* Pods-Layout-8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Layout-8.release.xcconfig"; path = "Pods/Target Support Files/Pods-Layout-8/Pods-Layout-8.release.xcconfig"; sourceTree = "<group>"; };
 		E2125FAD20AF137400785619 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2125FAF20AF137A00785619 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		E2125FB420AFE95300785619 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E21E576D209DE36E0052325F /* Layout-8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Layout-8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E21E5770209DE36E0052325F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E21E5772209DE36E0052325F /* PopManuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopManuViewController.swift; sourceTree = "<group>"; };
@@ -67,13 +69,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E2125FB120AF143300785619 /* Cell */ = {
+		E2125FB120AF143300785619 /* FoodCell */ = {
 			isa = PBXGroup;
 			children = (
 				E2125FAF20AF137A00785619 /* MyCollectionViewCell.xib */,
 				E2125FAD20AF137400785619 /* MyCollectionViewCell.swift */,
 			);
-			path = Cell;
+			path = FoodCell;
+			sourceTree = "<group>";
+		};
+		E2125FB620AFF0B500785619 /* Manu */ = {
+			isa = PBXGroup;
+			children = (
+				E21E5772209DE36E0052325F /* PopManuViewController.swift */,
+			);
+			path = Manu;
 			sourceTree = "<group>";
 		};
 		E21E5764209DE36E0052325F = {
@@ -98,10 +108,10 @@
 			isa = PBXGroup;
 			children = (
 				E21E5770209DE36E0052325F /* AppDelegate.swift */,
-				E21E5772209DE36E0052325F /* PopManuViewController.swift */,
-				E2125FB120AF143300785619 /* Cell */,
+				E2125FB620AFF0B500785619 /* Manu */,
+				E2125FB120AF143300785619 /* FoodCell */,
 				E2CB570620AC83A700FA830D /* TabBar */,
-				E2FFDDAD20AC6E4300706CB3 /* login */,
+				E2FFDDAD20AC6E4300706CB3 /* LogInSignUp */,
 				E21E5783209DE6FE0052325F /* LaunchScreen.storyboard */,
 				E21E5774209DE36E0052325F /* Main.storyboard */,
 				E21E5777209DE36E0052325F /* Assets.xcassets */,
@@ -119,12 +129,13 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		E2FFDDAD20AC6E4300706CB3 /* login */ = {
+		E2FFDDAD20AC6E4300706CB3 /* LogInSignUp */ = {
 			isa = PBXGroup;
 			children = (
 				E2FFDDAE20AC6E6000706CB3 /* SignUpViewController.swift */,
+				E2125FB420AFE95300785619 /* LoginViewController.swift */,
 			);
-			path = login;
+			path = LogInSignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2125FB520AFE95300785619 /* LoginViewController.swift in Sources */,
 				E2FFDDAF20AC6E6000706CB3 /* SignUpViewController.swift in Sources */,
 				E2125FAE20AF137400785619 /* MyCollectionViewCell.swift in Sources */,
 				E21E5773209DE36E0052325F /* PopManuViewController.swift in Sources */,

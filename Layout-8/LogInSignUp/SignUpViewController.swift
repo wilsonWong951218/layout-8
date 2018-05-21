@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate,UIN
                         return
                     }
                     print("Upload data success:\(databaseReff)")
-                    self.performSegue(withIdentifier: "showTabBarController", sender: nil)
+                    self.performSegue(withIdentifier: "SignUpShowTabBarController", sender: nil)
                 })
             })
             
