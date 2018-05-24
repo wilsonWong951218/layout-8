@@ -18,10 +18,12 @@ class PopManuViewController: UIViewController {
     var counter = 0
     var counter1 = 0
     lazy var myShopFoodCount = Int()
+    var test = [Int]()
+    var countValue = 0
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,7 @@ class PopManuViewController: UIViewController {
     
     func getFoodCount(){
         Database.database().reference().child("shopFOOD").child(myShopName).observeSingleEvent(of: .value) { (snapshot) in
-           self.myShopFoodCount = Int(snapshot.childrenCount)
+            self.myShopFoodCount = Int(snapshot.childrenCount)
             print("third:",self.myShopFoodCount)
             self.collectionView.reloadData()
         }
@@ -45,7 +47,7 @@ class PopManuViewController: UIViewController {
     }
     
     @objc func backToShop(){
-         navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -55,8 +57,8 @@ class PopManuViewController: UIViewController {
             let name  = food.key
             foodPrice += [dictionary["\(name)"] as! String]
         }
-        print(foodPrice)
-
+        // print(foodPrice)
+        
         return foodPrice
     }
     
@@ -65,15 +67,34 @@ class PopManuViewController: UIViewController {
             foodName += [food.key]
             
         }
-        print(foodName)
+        // print(foodName)
         return foodName
     }
     
-    @objc func touchAddButton(sender:Int){
-        foodNumberSelected += 1
-        print("4")
+    @objc func touchAddButton(_ sender:UIButton){
+        for index in test.indices{
+            if index == sender.tag{
+                let value = test[index]
+                test[index] = value + 1
+            }
+        }
+        
         collectionView.reloadData()
         
+    }
+    
+    @objc func touchSubButton(_ sender:UIButton){
+        for index in test.indices{
+            if index == sender.tag{
+                let value = test[index]
+                if value > 0 {
+                    test[index] = value - 1
+                }else{
+                    test[index] = 0
+                }
+            }
+        }
+        collectionView.reloadData()
     }
     
 }
@@ -85,32 +106,27 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
         return 1
     }
     
- 
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        if countValue < 1 {
+            for _ in 0...myShopFoodCount+1 {
+                test.append(0)
+            }
+            countValue += 1
+        }
         return myShopFoodCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCellId, for: indexPath) as! MyCollectionViewCell
         
-        if indexPath.row == 0{
-            cell.addButton.addTarget(self, action: #selector(touchAddButton), for: .touchUpInside)
-            
-            counter += foodNumberSelected
-            cell.countLabel.text = String(counter)
-            foodNumberSelected = 0
-            print("1")
-           
-        }
+        cell.addButton.tag = indexPath.row
+        cell.addButton.addTarget(self, action: #selector(touchAddButton), for: .touchUpInside)
+        cell.subButton.tag = indexPath.row
+        cell.subButton.addTarget(self, action: #selector(touchSubButton), for: .touchUpInside)
+        cell.countLabel.text = String(test[indexPath.row])
         
-        if indexPath.row == 1{
-            cell.addButton.addTarget(self, action: #selector(touchAddButton), for: .touchUpInside)
-            counter1 += foodNumberSelected
-            cell.countLabel.text = String(counter1)
-            print("2")
-            
-        }
+        
         
         Database.database().reference().child("shopFOOD").child(myShopName).observeSingleEvent(of: .value, with: { (snapshot) in
             var foodNameArray = self.getFoodName(snapshot)
@@ -126,21 +142,5 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCellId, for: indexPath) as! MyCollectionViewCell
-       
-      
-//        if indexPath.section == 1{
-//            print("1")
-////        labelCount = cell.countLabel
-////        cell.addButton.addTarget(self, action: #selector(touchAddButton), for: .touchUpInside)
-//        }
-//        if indexPath.section == 2{
-//            print("2")
-//        }
-     
-    }
     
-
 }
-
