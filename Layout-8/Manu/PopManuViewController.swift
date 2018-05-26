@@ -18,8 +18,9 @@ class PopManuViewController: UIViewController {
     var counter = 0
     var counter1 = 0
     lazy var myShopFoodCount = Int()
-    var test = [Int]()
+    var orderData = [Int]()
     var countValue = 0
+    @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -32,8 +33,17 @@ class PopManuViewController: UIViewController {
         let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: nil)
         collectionView.register(nibCell, forCellWithReuseIdentifier: MyCollectionViewCellId)
         //print("SecondViewCount:",myShopFoodCount)
+        confirmButton.addTarget(self, action: #selector(handleConfirm), for: .touchUpInside)
         
         
+    }
+    
+    
+    @objc func handleConfirm(){
+        print("Save data in userdefault")
+        UserDefaults.standard.removeObject(forKey:myShopName)
+        UserDefaults.standard.set(orderData, forKey:myShopName)
+        UserDefaults.standard.synchronize()
         
     }
     
@@ -72,10 +82,10 @@ class PopManuViewController: UIViewController {
     }
     
     @objc func touchAddButton(_ sender:UIButton){
-        for index in test.indices{
+        for index in orderData.indices{
             if index == sender.tag{
-                let value = test[index]
-                test[index] = value + 1
+                let value = orderData[index]
+                orderData[index] = value + 1
             }
         }
         
@@ -84,13 +94,13 @@ class PopManuViewController: UIViewController {
     }
     
     @objc func touchSubButton(_ sender:UIButton){
-        for index in test.indices{
+        for index in orderData.indices{
             if index == sender.tag{
-                let value = test[index]
+                let value = orderData[index]
                 if value > 0 {
-                    test[index] = value - 1
+                    orderData[index] = value - 1
                 }else{
-                    test[index] = 0
+                    orderData[index] = 0
                 }
             }
         }
@@ -110,7 +120,7 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if countValue < 1 {
             for _ in 0...myShopFoodCount+1 {
-                test.append(0)
+                orderData.append(0)
             }
             countValue += 1
         }
@@ -124,7 +134,7 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.addButton.addTarget(self, action: #selector(touchAddButton), for: .touchUpInside)
         cell.subButton.tag = indexPath.row
         cell.subButton.addTarget(self, action: #selector(touchSubButton), for: .touchUpInside)
-        cell.countLabel.text = String(test[indexPath.row])
+        cell.countLabel.text = String(orderData[indexPath.row])
         
         
         

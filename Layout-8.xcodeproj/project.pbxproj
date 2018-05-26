@@ -15,6 +15,10 @@
 		E21E5776209DE36E0052325F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21E5774209DE36E0052325F /* Main.storyboard */; };
 		E21E5778209DE36E0052325F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21E5777209DE36E0052325F /* Assets.xcassets */; };
 		E21E5785209DE6FF0052325F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21E5783209DE6FE0052325F /* LaunchScreen.storyboard */; };
+		E22FF5CF20B6C69F004AE477 /* OrderManuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FF5CE20B6C69F004AE477 /* OrderManuViewController.swift */; };
+		E22FF5D220B7D5F0004AE477 /* MyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FF5D120B7D5F0004AE477 /* MyTabBarViewController.swift */; };
+		E22FF5D520B9159F004AE477 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FF5D320B9159F004AE477 /* MyTableViewCell.swift */; };
+		E22FF5D620B9159F004AE477 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22FF5D420B9159F004AE477 /* MyTableViewCell.xib */; };
 		E2A62A1920AC6DD400DD0322 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2A62A1820AC6DD400DD0322 /* GoogleService-Info.plist */; };
 		E2CB570820AC83C700FA830D /* ProflieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB570720AC83C700FA830D /* ProflieViewController.swift */; };
 		E2FFDDAF20AC6E6000706CB3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FFDDAE20AC6E6000706CB3 /* SignUpViewController.swift */; };
@@ -35,6 +39,10 @@
 		E21E5777209DE36E0052325F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E21E577C209DE36E0052325F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E21E5783209DE6FE0052325F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E22FF5CE20B6C69F004AE477 /* OrderManuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManuViewController.swift; sourceTree = "<group>"; };
+		E22FF5D120B7D5F0004AE477 /* MyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarViewController.swift; sourceTree = "<group>"; };
+		E22FF5D320B9159F004AE477 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		E22FF5D420B9159F004AE477 /* MyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 		E2A62A1820AC6DD400DD0322 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2CB570720AC83C700FA830D /* ProflieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProflieViewController.swift; sourceTree = "<group>"; };
 		E2FFDDAE20AC6E6000706CB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +82,8 @@
 			children = (
 				E2125FAF20AF137A00785619 /* MyCollectionViewCell.xib */,
 				E2125FAD20AF137400785619 /* MyCollectionViewCell.swift */,
+				E22FF5D420B9159F004AE477 /* MyTableViewCell.xib */,
+				E22FF5D320B9159F004AE477 /* MyTableViewCell.swift */,
 			);
 			path = FoodCell;
 			sourceTree = "<group>";
@@ -125,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				E2CB570720AC83C700FA830D /* ProflieViewController.swift */,
+				E22FF5CE20B6C69F004AE477 /* OrderManuViewController.swift */,
+				E22FF5D120B7D5F0004AE477 /* MyTabBarViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -200,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E21E5778209DE36E0052325F /* Assets.xcassets in Resources */,
+				E22FF5D620B9159F004AE477 /* MyTableViewCell.xib in Resources */,
 				E2A62A1920AC6DD400DD0322 /* GoogleService-Info.plist in Resources */,
 				E2125FB020AF137A00785619 /* MyCollectionViewCell.xib in Resources */,
 				E21E5776209DE36E0052325F /* Main.storyboard in Resources */,
@@ -259,9 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22FF5D220B7D5F0004AE477 /* MyTabBarViewController.swift in Sources */,
+				E22FF5CF20B6C69F004AE477 /* OrderManuViewController.swift in Sources */,
 				E2125FB520AFE95300785619 /* LoginViewController.swift in Sources */,
 				E2FFDDAF20AC6E6000706CB3 /* SignUpViewController.swift in Sources */,
 				E2125FAE20AF137400785619 /* MyCollectionViewCell.swift in Sources */,
+				E22FF5D520B9159F004AE477 /* MyTableViewCell.swift in Sources */,
 				E21E5773209DE36E0052325F /* PopManuViewController.swift in Sources */,
 				E2CB570820AC83C700FA830D /* ProflieViewController.swift in Sources */,
 				E21E5771209DE36E0052325F /* AppDelegate.swift in Sources */,

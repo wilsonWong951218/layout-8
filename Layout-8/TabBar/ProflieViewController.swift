@@ -45,7 +45,7 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
             print(snapshot.value ?? "")
             for food in (snapshot.children.allObjects as! [DataSnapshot]){
                 
-                print("Food:", food.key)
+                //print("Food:", food.key)
                 self.shopName.append(food.key)
             }
             self.tableViewShop.reloadData()
@@ -116,6 +116,8 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
       
     }
     
-
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("cc")
+    }
     
 }
