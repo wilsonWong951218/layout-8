@@ -13,4 +13,6 @@ class OrderData{
     var foodNameData = String()
     var foodPriceData = String()
     var orderedCount = String()
+    
+
 }

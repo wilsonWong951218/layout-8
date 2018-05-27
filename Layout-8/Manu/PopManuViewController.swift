@@ -46,9 +46,11 @@ class PopManuViewController: UIViewController {
         var dataArray = [[String]]()
         
         for index in 0..<getOrderData.count{
-            let array = [getOrderData[index].foodPriceData,getOrderData[index].orderedCount]
-            let dictionary = [[getOrderData[index].foodNameData],array]
-            dataArray += dictionary
+            dataArray.append([getOrderData[index].foodNameData,getOrderData[index].foodPriceData,getOrderData[index].orderedCount])
+           // let dictionary:[String:Any] = [getOrderData[index].foodNameData:array]
+            
+           // let dictionary = [[getOrderData[index].foodNameData],array]
+           // dataArray.append(array)
         }
         
         UserDefaults.standard.set(dataArray, forKey: myShopName)

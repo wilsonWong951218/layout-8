@@ -19,45 +19,48 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
     var shopName = [String]()
     var shopNameArray = [String]()
     var userDefualtsKey = String()
-    
+     var array = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
       tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(addTableCell), for: .valueChanged)
+        tableView.refreshControl?.addTarget(self, action: #selector(getDataValue), for: .valueChanged)
         tableArrayFinal.removeAll()
         let nibCell = UINib(nibName:ID, bundle: nil)
         tableView.register(nibCell, forCellReuseIdentifier: ID)
+        print(NSHomeDirectory())
         
     }
 
 
     
-
-    
-   @objc func addTableCell(){
-    var array = [String]()
-    var shopArray = [String]()
-
-        for index in 0..<shopName.count{
-            if let orderData = UserDefaults.standard.object(forKey:shopName[index]){
-
-                tableArray = orderData as! NSArray
-                for index1 in 0..<tableArray.count{
-                    if tableArray[index1] as! Int != 0{
-                        shopArray.append(shopName[index1])
-
-                        shopNameArray = shopArray
-                        array.append(String(tableArray[index1] as! Int))
-                        tableArrayFinal = array
-                    }
+    @objc func getDataValue(){
+       
+        
+        Database.database().reference().child("shopFOOD").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+           // print(snapshot.value ?? "")
+            for food in (snapshot.children.allObjects as! [DataSnapshot]){
+            
+                self.shopName.append(food.key)
+            }
+            
+        }) { (error) in
+            print("Error:\(error)")
+        }
+        
+        for shop in 0..<shopName.count{
+            if let orderData = UserDefaults.standard.object(forKey:shopName[shop]) as? NSArray{
+                for index in 0..<orderData.count{
+                    array = orderData[index] as! [String]
+                    
                 }
             }
         }
-    tableView.reloadData()
-    tableView.refreshControl!.endRefreshing()
-    shopArray.removeAll()
-    array.removeAll()
+        print(array)
+        tableView.reloadData()
+        tableView.refreshControl!.endRefreshing()
+        
     }
+    
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,10 +69,11 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:ID, for: indexPath) as! MyTableViewCell
-        if tableArrayFinal.count != 0{
-            cell.lbShop.text = shopNameArray[indexPath.row]
+       
+        //print(arrayData)
+            cell.lbShop.text = array[indexPath.row]
            // cell.lbFood.text =
-        }
+    
         return cell
     }
     

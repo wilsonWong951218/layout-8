@@ -23,23 +23,23 @@ class MyTabBarViewController: UITabBarController {
     }
     
    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.tag == 1{
-            print("a")
-            
-            Database.database().reference().child("shopFOOD").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                print(snapshot.value ?? "")
-                for food in (snapshot.children.allObjects as! [DataSnapshot]){
-                    
-                    print("Food:", food.key)
-                    self.shopName.append(food.key)
-                }
-            }) { (error) in
-                print("Error:\(error)")
-            }
-            orderClass.tableArrayFinal = shopName
-           
-            
-        }
+//        if item.tag == 1{
+//            print("a")
+//
+//            Database.database().reference().child("shopFOOD").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+//                print(snapshot.value ?? "")
+//                for food in (snapshot.children.allObjects as! [DataSnapshot]){
+//
+//                    print("Food:", food.key)
+//                    self.shopName.append(food.key)
+//                }
+//            }) { (error) in
+//                print("Error:\(error)")
+//            }
+//            orderClass.tableArrayFinal = shopName
+//
+//
+//        }
     }
     /*
     // MARK: - Navigation
