@@ -22,8 +22,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        handleGetShopName()
-        tableView.refreshControl = UIRefreshControl()
+      tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(addTableCell), for: .valueChanged)
         tableArrayFinal.removeAll()
         let nibCell = UINib(nibName:ID, bundle: nil)
@@ -31,47 +30,22 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         
     }
 
-    func handleGetShopName(){
-        Database.database().reference().child("shopFOOD").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-            print(snapshot.value ?? "")
-            for food in (snapshot.children.allObjects as! [DataSnapshot]){
-                
-                print("Food:", food.key)
-                self.shopName.append(food.key)
-                
-            }
-        }) { (error) in
-            print("Error:\(error)")
-        }
-    }
+
     
-//    @IBAction func showbutton(_ sender: UIButton) {
-//        let path = NSHomeDirectory()
-//        print(path)
-//        for index in 0..<shopName.count{
-//            if let orderData = UserDefaults.standard.object(forKey:shopName[index]){
-//                tableArray = orderData as! NSArray
-//                for index in 0..<tableArray.count{
-//                    if tableArray[index] as! Int != 0{
-//                        print(tableArray[index])
-//
-//                    }
-//                }
-//            }
-//        }
-//    }
+
     
    @objc func addTableCell(){
     var array = [String]()
     var shopArray = [String]()
+
         for index in 0..<shopName.count{
             if let orderData = UserDefaults.standard.object(forKey:shopName[index]){
-               
+
                 tableArray = orderData as! NSArray
                 for index1 in 0..<tableArray.count{
                     if tableArray[index1] as! Int != 0{
                         shopArray.append(shopName[index1])
-                
+
                         shopNameArray = shopArray
                         array.append(String(tableArray[index1] as! Int))
                         tableArrayFinal = array

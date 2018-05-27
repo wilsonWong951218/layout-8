@@ -10,6 +10,8 @@ import Firebase
 class PopManuViewController: UIViewController {
     
     let MyCollectionViewCellId: String = "MyCollectionViewCell"
+    var getOrderData = [OrderData]()
+    
     var foodName = [String]()
     var foodPrice = [String]()
     var myShopName = String()
@@ -41,9 +43,19 @@ class PopManuViewController: UIViewController {
     
     @objc func handleConfirm(){
         print("Save data in userdefault")
-        UserDefaults.standard.removeObject(forKey:myShopName)
-        UserDefaults.standard.set(orderData, forKey:myShopName)
+        var dataArray = [[String]]()
+        
+        for index in 0..<getOrderData.count{
+            let array = [getOrderData[index].foodPriceData,getOrderData[index].orderedCount]
+            let dictionary = [[getOrderData[index].foodNameData],array]
+            dataArray += dictionary
+        }
+        
+        UserDefaults.standard.set(dataArray, forKey: myShopName)
+//        UserDefaults.standard.removeObject(forKey:myShopName)
+//        UserDefaults.standard.set(orderData, forKey:myShopName)
         UserDefaults.standard.synchronize()
+        dataArray.removeAll()
         
     }
     
@@ -121,9 +133,12 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
         if countValue < 1 {
             for _ in 0...myShopFoodCount+1 {
                 orderData.append(0)
+                let test = OrderData()
+                getOrderData += [test]
             }
             countValue += 1
         }
+        
         return myShopFoodCount
     }
     
@@ -136,6 +151,10 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.subButton.addTarget(self, action: #selector(touchSubButton), for: .touchUpInside)
         cell.countLabel.text = String(orderData[indexPath.row])
         
+        if let count = cell.countLabel.text{
+            self.getOrderData[indexPath.row].orderedCount = count
+        }
+        
         
         
         Database.database().reference().child("shopFOOD").child(myShopName).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -143,6 +162,16 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
             var foodPriceArray = self.getFoodPrice(snapshot)
             cell.lbName.text = foodNameArray[indexPath.row]
             cell.lbPrice.text = "Price:\(foodPriceArray[indexPath.row])"
+            
+            self.getOrderData[indexPath.row].shopNameData = self.myShopName
+            
+
+            guard let name = cell.lbName.text else {return}
+            self.getOrderData[indexPath.row].foodNameData = name
+            
+            guard let price = cell.lbPrice.text else {return}
+            self.getOrderData[indexPath.row].foodPriceData = price
+            
         }) { (error) in
             print("Error get food detail:",error)
         }
@@ -150,7 +179,7 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    
+   
     
     
 }

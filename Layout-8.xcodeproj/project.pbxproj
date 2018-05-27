@@ -19,6 +19,7 @@
 		E22FF5D220B7D5F0004AE477 /* MyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FF5D120B7D5F0004AE477 /* MyTabBarViewController.swift */; };
 		E22FF5D520B9159F004AE477 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FF5D320B9159F004AE477 /* MyTableViewCell.swift */; };
 		E22FF5D620B9159F004AE477 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22FF5D420B9159F004AE477 /* MyTableViewCell.xib */; };
+		E22FF5D820B9C3B1004AE477 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FF5D720B9C3B1004AE477 /* OrderData.swift */; };
 		E2A62A1920AC6DD400DD0322 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2A62A1820AC6DD400DD0322 /* GoogleService-Info.plist */; };
 		E2CB570820AC83C700FA830D /* ProflieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB570720AC83C700FA830D /* ProflieViewController.swift */; };
 		E2FFDDAF20AC6E6000706CB3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FFDDAE20AC6E6000706CB3 /* SignUpViewController.swift */; };
@@ -43,6 +44,7 @@
 		E22FF5D120B7D5F0004AE477 /* MyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarViewController.swift; sourceTree = "<group>"; };
 		E22FF5D320B9159F004AE477 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		E22FF5D420B9159F004AE477 /* MyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
+		E22FF5D720B9C3B1004AE477 /* OrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
 		E2A62A1820AC6DD400DD0322 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2CB570720AC83C700FA830D /* ProflieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProflieViewController.swift; sourceTree = "<group>"; };
 		E2FFDDAE20AC6E6000706CB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				E21E5772209DE36E0052325F /* PopManuViewController.swift */,
+				E22FF5D720B9C3B1004AE477 /* OrderData.swift */,
 			);
 			path = Manu;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				E2FFDDAF20AC6E6000706CB3 /* SignUpViewController.swift in Sources */,
 				E2125FAE20AF137400785619 /* MyCollectionViewCell.swift in Sources */,
 				E22FF5D520B9159F004AE477 /* MyTableViewCell.swift in Sources */,
+				E22FF5D820B9C3B1004AE477 /* OrderData.swift in Sources */,
 				E21E5773209DE36E0052325F /* PopManuViewController.swift in Sources */,
 				E2CB570820AC83C700FA830D /* ProflieViewController.swift in Sources */,
 				E21E5771209DE36E0052325F /* AppDelegate.swift in Sources */,
