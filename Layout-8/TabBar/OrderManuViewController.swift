@@ -50,12 +50,12 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         for shop in 0..<shopName.count{
             if let orderData = UserDefaults.standard.object(forKey:shopName[shop]) as? NSArray{
                 for index in 0..<orderData.count{
-                    array = orderData[index] as! [String]
+                    array += orderData[index] as! [String]
                     
                 }
             }
         }
-        print(array)
+        print("hallo",array)
         tableView.reloadData()
         tableView.refreshControl!.endRefreshing()
         
@@ -64,15 +64,18 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableArrayFinal.count
+        var counter = Int()
+        for index in 0..<shopName.count{
+            if let orderData = UserDefaults.standard.object(forKey: shopName[index]) as? NSArray{
+            counter += orderData.count
+            }
+        }
+        return counter
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:ID, for: indexPath) as! MyTableViewCell
-       
-        //print(arrayData)
             cell.lbShop.text = array[indexPath.row]
-           // cell.lbFood.text =
     
         return cell
     }
