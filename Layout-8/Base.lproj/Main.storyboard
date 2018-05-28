@@ -136,6 +136,7 @@
                     <connections>
                         <outlet property="tabBar" destination="1Bt-8p-daZ" id="jKa-Zt-KBl"/>
                         <outlet property="tableView" destination="kNd-bJ-Os5" id="jJ7-IS-XAA"/>
+                        <outlet property="totalAmount" destination="33o-2J-QdN" id="bgh-DX-DIX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6RF-k1-HGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -151,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffl-Hw-DL5">
-                                <rect key="frame" x="0.0" y="44" width="375" height="723"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="724"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lzL-ja-DLl">
                                         <rect key="frame" x="8" y="78" width="359" height="637"/>
@@ -393,7 +394,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY APPS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-sC-jyE">
-                                <rect key="frame" x="152" y="141" width="72" height="21"/>
+                                <rect key="frame" x="151.66666666666666" y="141" width="72" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -491,10 +492,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a2-b2-5s7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJy-Ka-wxz">
-                                        <rect key="frame" x="118.33333333333331" y="40" width="140" height="140"/>
+                                        <rect key="frame" x="336.33333333333331" y="40" width="140" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="7mR-Bs-K0a"/>
                                             <constraint firstAttribute="height" constant="140" id="val-s6-4Sa"/>
@@ -502,31 +503,31 @@
                                         <state key="normal" title=" " image="plus_photo"/>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="s7H-IH-d8i">
-                                        <rect key="frame" x="40" y="200" width="295" height="150"/>
+                                        <rect key="frame" x="40" y="200" width="732" height="150"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvI-8O-c7B">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="732" height="30"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHN-mj-ZIL">
-                                                <rect key="frame" x="0.0" y="40" width="295" height="30"/>
+                                                <rect key="frame" x="0.0" y="40" width="732" height="30"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A9Y-d8-XoL">
-                                                <rect key="frame" x="0.0" y="80" width="295" height="30"/>
+                                                <rect key="frame" x="0.0" y="80" width="732" height="30"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xra-7f-rlT">
-                                                <rect key="frame" x="0.0" y="120" width="295" height="30"/>
+                                                <rect key="frame" x="0.0" y="120" width="732" height="30"/>
                                                 <color key="backgroundColor" red="0.80169373722994786" green="0.85191678590799103" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="SignUp"/>
                                             </button>
@@ -544,7 +545,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="iSZ-ql-RN3">
-                                        <rect key="frame" x="40" y="613" width="295" height="46"/>
+                                        <rect key="frame" x="40" y="613" width="732" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already get an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWA-qa-GBb">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="46"/>
@@ -553,7 +554,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvC-9d-Rt2">
-                                                <rect key="frame" x="252" y="0.0" width="43" height="46"/>
+                                                <rect key="frame" x="689" y="0.0" width="43" height="46"/>
                                                 <state key="normal" title="SignIn">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>

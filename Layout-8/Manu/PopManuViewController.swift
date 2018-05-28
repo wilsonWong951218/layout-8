@@ -46,7 +46,7 @@ class PopManuViewController: UIViewController {
         var dataArray = [[String]]()
         
         for index in 0..<getOrderData.count{
-            dataArray.append([getOrderData[index].foodNameData,getOrderData[index].foodPriceData,getOrderData[index].orderedCount])
+            dataArray.append([getOrderData[index].shopNameData,getOrderData[index].foodNameData,getOrderData[index].foodPriceData,getOrderData[index].orderedCount])
            // let dictionary:[String:Any] = [getOrderData[index].foodNameData:array]
             
            // let dictionary = [[getOrderData[index].foodNameData],array]
@@ -171,7 +171,7 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
             guard let name = cell.lbName.text else {return}
             self.getOrderData[indexPath.row].foodNameData = name
             
-            guard let price = cell.lbPrice.text else {return}
+            let price = foodPriceArray[indexPath.row]
             self.getOrderData[indexPath.row].foodPriceData = price
             
         }) { (error) in

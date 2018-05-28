@@ -10,6 +10,8 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lbOrdered: UILabel!
+    @IBOutlet weak var lbPrice: UILabel!
     @IBOutlet weak var lbFood: UILabel!
     @IBOutlet weak var lbShop: UILabel!
     override func awakeFromNib() {
