@@ -1,4 +1,4 @@
-//
+
 //  OrderManuViewController.swift
 //  Layout-8
 //
@@ -11,7 +11,7 @@ import Firebase
 
 
 class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSource ,UITabBarDelegate{
-
+    
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var tabBar: UITabBarItem!
     @IBOutlet weak var tableView: UITableView!
@@ -35,22 +35,19 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         super.viewDidLoad()
         updateButton.addTarget(self, action: #selector(handleUpdataButton), for: .touchUpInside)
         
-        
         //table view refresh
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action:#selector(getDataValue), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
-
+        
         //table view cell connect
         let nibCell = UINib(nibName:ID, bundle: nil)
         tableView.register(nibCell, forCellReuseIdentifier: ID)
         print("URL:",NSHomeDirectory())
         
-        
         //get database foodName
         Database.database().reference().child("shopFOOD").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             for food in (snapshot.children.allObjects as! [DataSnapshot]){
-                
                 self.shopName.append(food.key)
             }
             
@@ -60,22 +57,23 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         }
         
     }
-
+    
     // after refresh UI-tableView get all UI-collectionView data in to array
     @objc func getDataValue(sender:AnyObject){
+        getDataValueRefreshNonObjc()
+    }
+    
+    func getDataValueRefreshNonObjc(){
         array.removeAll()
         orderData.removeAll()
         if array.count == 0{
             totalAmount.text = "總金額：NT$0"
         }
+        //array : value for cell display
+        //orderData : value for userDefaults
         for shop in 0..<shopName.count{
             if let orderData = UserDefaults.standard.object(forKey:shopName[shop]) as? [[String]]{
-                
                 array += orderData
-                
-                print("Shop:",shop)
-                print("orderData:",orderData)
-                
             }
         }
         print("hallo",array)
@@ -94,65 +92,56 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
                 orderData[updataCount].foodPriceData = array[index-removeCount][2]
                 orderData[updataCount].orderedCount = array[index-removeCount][3]
                 updataCount += 1
-
-//                updataOrderData[updataCount].shopNameData = array[index-removeCount][0]
-//                updataOrderData[updataCount].foodNameData = array[index-removeCount][1]
-//                print(updataOrderData[updataCount].foodNameData)
-//                updataOrderData[updataCount].foodPriceData = array[index-removeCount][2]
-//                updataOrderData[updataCount].orderedCount = array[index-removeCount][3]
-                
             }
-            
         }
-        
-      
         tableView.reloadData()
         refreshControl.endRefreshing()
-        
         totalAmountCount = 0
-        
-        
     }
     
-
     //updata ordered data to db
-   @objc func handleUpdataButton(){
-    var finalDataValue = [[String : [String : [String : String]]]]()
-    
+    @objc func handleUpdataButton(){
+        var finalDataValue =  [[String : [String : String]]]()
         year.dateFormat = "yyyy年"
         month.dateFormat = "MM月"
         date.dateFormat = "dd日"
         time.dateFormat = "HH:mm:ss"
-    
-     let isYear = year.string(from: now)
-     let isMonth = month.string(from: now)
-     let isDate = date.string(from: now)
-     let isTime = time.string(from: now)
-    
-    for index in 0..<orderData.count{
-        let value = orderData[index].dictionaryCreate()
-        finalDataValue.append(value)
-    }
-    
-//    let dataArray = [isDate:finalDataValue]
-//    let monthArray = [isMonth:dataArray]
-//    let yearArray = [isYear:monthArray]
-     Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)").childByAutoId().setValue(finalDataValue)
+        let isYear = year.string(from: now)
+        let isMonth = month.string(from: now)
+        let isDate = date.string(from: now)
+        //let isTime = time.string(from: now)
+        let ref = Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)")
+        let postRefKey = ref.childByAutoId()
+        
+        //sort shop/food data and update to firebase
+        var myShop = orderData[0].shopNameData
+        for index in 0..<orderData.count{
+            if index == 0{
+                postRefKey.updateChildValues(orderData[index].dictionaryCreateShop())
+            }
+            else if myShop == orderData[index].shopNameData{
+                postRefKey.child(orderData[index].shopNameData).updateChildValues(orderData[index].dictionaryCreate())
+            }
+            else{
+                myShop = orderData[index].shopNameData
+                postRefKey.updateChildValues(orderData[index].dictionaryCreateShop())
+            }
+            finalDataValue.removeAll()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return array.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let indexCount = 0
         let cell = tableView.dequeueReusableCell(withIdentifier:ID, for: indexPath) as! MyTableViewCell
         
-            cell.lbShop.text = array[indexPath.row][indexCount]
-            cell.lbFood.text = array[indexPath.row][indexCount+1]
-            cell.lbPrice.text = array[indexPath.row][indexCount+2]
-            cell.lbOrdered.text = array[indexPath.row][indexCount+3]
+        cell.lbShop.text = array[indexPath.row][indexCount]
+        cell.lbFood.text = array[indexPath.row][indexCount+1]
+        cell.lbPrice.text = array[indexPath.row][indexCount+2]
+        cell.lbOrdered.text = array[indexPath.row][indexCount+3]
         
         guard let lbPrice = cell.lbPrice.text else {return cell}
         guard let lbOrdered = cell.lbOrdered.text else {return cell}
@@ -161,6 +150,30 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         
         return cell
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.reloadData()
+        var countTable = 0
+        
+       let shopName = array[indexPath.row][0]
+       let foodName = array[indexPath.row][1]
+        array.remove(at: indexPath.row)
+        
+        var prefs = UserDefaults.standard.array(forKey:"\(shopName)") as! [[String]]
+        for index_1 in 0 ..< prefs.count {
+            if prefs[index_1][0] == "\(shopName)"
+                && prefs[index_1][1] == "\(foodName)"{
+                prefs[index_1][3] = "0"
+                UserDefaults.standard.set(prefs, forKey: shopName)
+                }
+         
+        }
+        countTable += 1
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        getDataValueRefreshNonObjc()
+    }
     
-  
+    
 }

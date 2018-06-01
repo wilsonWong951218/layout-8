@@ -16,7 +16,12 @@ class OrderData{
     let uuid = UUID().uuidString
  
    
-    func dictionaryCreate() -> [String:[String:[String:String]]]{
+    func dictionaryCreate() -> [String:[String:String]]{
+        let dictionary = [self.foodNameData:["Price":self.foodPriceData,"Count":self.orderedCount]]
+        return dictionary
+    }
+    
+    func dictionaryCreateShop() -> [String:[String:[String:String]]]{
         
         let dictionary = [self.shopNameData:[self.foodNameData:["Price":self.foodPriceData,"Count":self.orderedCount]]]
         return dictionary
