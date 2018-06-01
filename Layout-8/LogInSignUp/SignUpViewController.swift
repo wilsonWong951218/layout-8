@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     @IBOutlet weak var userPasswordText: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     
+    @IBOutlet weak var backToLoging: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,9 +26,15 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         userPasswordText.addTarget(self, action: #selector(heandTextField), for: .editingChanged)
         signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         photoUploadButton.addTarget(self, action: #selector(handleUploadPhoto), for: .touchUpInside)
+        backToLoging.addTarget(self, action: #selector(handleBackToLogIn), for: .touchUpInside)
         // Do any additional setup after loading the view.
+        
+        signUpButton.layer.cornerRadius = 2
     }
 
+    @objc func handleBackToLogIn(){
+        dismiss(animated: true, completion: nil)
+    }
     @objc func handleUploadPhoto(){
         let imagePickUpControl = UIImagePickerController()
         imagePickUpControl.delegate = self
@@ -98,10 +105,10 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     @objc func heandTextField(){
         if let emailTextIsField = emailText.text , let userNameTextIsField = userNameText.text,let userPasswordTextIsField = userPasswordText.text{
             if emailTextIsField.count > 0 && userPasswordTextIsField.count > 0 && userNameTextIsField.count > 0{
-                signUpButton.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+                signUpButton.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
                 signUpButton.isEnabled = true
             }else{
-                signUpButton.backgroundColor = #colorLiteral(red: 0.8016937372, green: 0.8519167859, blue: 1, alpha: 1)
+                signUpButton.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 signUpButton.isEnabled = false
             }
         }

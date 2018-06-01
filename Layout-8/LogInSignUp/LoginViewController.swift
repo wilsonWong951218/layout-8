@@ -18,11 +18,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+    }
+    
     func setUpUI(){
         emailText.addTarget(self, action: #selector(handleTextFill), for: .editingChanged)
         passwordText.addTarget(self, action: #selector(handleTextFill), for: .editingChanged)
         loginButton.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
+        loginButton.layer.cornerRadius = 2
     }
     
     @objc func handleLogIn(){
@@ -45,7 +50,7 @@ class LoginViewController: UIViewController {
         if let isEmailFill = emailText.text ,let isPasswordFill = passwordText.text{
             if isEmailFill.count > 0 && isPasswordFill.count > 0 {
                 loginButton.isEnabled = true
-                loginButton.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+                loginButton.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
             }else{
                 loginButton.isEnabled = false
                 loginButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

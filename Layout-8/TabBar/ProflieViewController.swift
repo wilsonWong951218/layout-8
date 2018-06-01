@@ -12,6 +12,7 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
     
 
     
+    @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var tableViewShop: UITableView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
@@ -22,6 +23,7 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
         super.viewDidLoad()
         profilePic.layer.cornerRadius = 160/2
         profilePic.clipsToBounds = true
+        logoutButton.addTarget(self, action: #selector(handleLogOut), for: .touchUpInside)
         getDBvalueUser()
         getDBvalueShop()
        
@@ -37,7 +39,11 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
 
     }
     
-    func getFoodCellCount(){
+    @objc func handleLogOut(){
+        try! Auth.auth().signOut()
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     fileprivate func getDBvalueShop(){

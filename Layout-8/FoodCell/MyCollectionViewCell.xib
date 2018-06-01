@@ -98,6 +98,7 @@
             <size key="customSize" width="328" height="76"/>
             <connections>
                 <outlet property="addButton" destination="rsK-0q-FmQ" id="PXw-KL-O4M"/>
+                <outlet property="backView" destination="WgZ-G3-QRh" id="Ojw-kK-WMw"/>
                 <outlet property="countLabel" destination="zAZ-Ba-XEV" id="1FU-JL-1O0"/>
                 <outlet property="lbName" destination="CC0-2f-g3J" id="ip8-49-0tG"/>
                 <outlet property="lbPrice" destination="dZj-Dv-KLI" id="t0x-zY-bgH"/>

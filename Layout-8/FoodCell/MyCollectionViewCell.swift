@@ -11,6 +11,7 @@ import UIKit
 class MyCollectionViewCell: UICollectionViewCell {
 
 
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbPrice: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -20,6 +21,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        backView.layer.borderWidth = 2
+        backView.layer.cornerRadius = 5
     }
 
 }
