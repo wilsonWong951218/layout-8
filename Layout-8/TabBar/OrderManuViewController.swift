@@ -26,7 +26,9 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
     let year = DateFormatter()
     let month = DateFormatter()
     let date = DateFormatter()
-    let orderData = OrderData()
+    let time = DateFormatter()
+    var orderData = [OrderData]()
+    
     @IBOutlet weak var totalAmount: UILabel!
     
     override func viewDidLoad() {
@@ -62,7 +64,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
     // after refresh UI-tableView get all UI-collectionView data in to array
     @objc func getDataValue(sender:AnyObject){
         array.removeAll()
-        updataOrderData.removeAll()
+        orderData.removeAll()
         if array.count == 0{
             totalAmount.text = "總金額：NT$0"
         }
@@ -85,26 +87,25 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
                 array.remove(at: index-removeCount)
                 removeCount += 1
             }else{
-                orderData.shopNameData = array[index-removeCount][0]
-                orderData.foodNameData = array[index-removeCount][1]
-                orderData.foodPriceData = array[index-removeCount][2]
-                orderData.orderedCount = array[index-removeCount][3]
-                updataOrderData += [orderData]
+                let data = OrderData()
+                orderData.append(data)
+                orderData[updataCount].shopNameData = array[index-removeCount][0]
+                orderData[updataCount].foodNameData = array[index-removeCount][1]
+                orderData[updataCount].foodPriceData = array[index-removeCount][2]
+                orderData[updataCount].orderedCount = array[index-removeCount][3]
+                updataCount += 1
+
 //                updataOrderData[updataCount].shopNameData = array[index-removeCount][0]
-//
 //                updataOrderData[updataCount].foodNameData = array[index-removeCount][1]
 //                print(updataOrderData[updataCount].foodNameData)
 //                updataOrderData[updataCount].foodPriceData = array[index-removeCount][2]
 //                updataOrderData[updataCount].orderedCount = array[index-removeCount][3]
                 
-                
-               
-                
             }
             
         }
         
-        print(updataOrderData[0].foodNameData)
+      
         tableView.reloadData()
         refreshControl.endRefreshing()
         
@@ -116,24 +117,27 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
 
     //updata ordered data to db
    @objc func handleUpdataButton(){
+    var finalDataValue = [[String : [String : [String : String]]]]()
+    
         year.dateFormat = "yyyy年"
         month.dateFormat = "MM月"
         date.dateFormat = "dd日"
+        time.dateFormat = "HH:mm:ss"
+    
      let isYear = year.string(from: now)
      let isMonth = month.string(from: now)
      let isDate = date.string(from: now)
+     let isTime = time.string(from: now)
     
-    for index in 0..<updataOrderData.count{
-        let value = updataOrderData[index].dictionaryCreate()
-        print(value)
-        let dataArray = [isDate:value]
-        let monthArray = [isMonth:dataArray]
-        let yearArray = [isYear:monthArray]
-      
-       // Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)").childByAutoId().setValue(value)
+    for index in 0..<orderData.count{
+        let value = orderData[index].dictionaryCreate()
+        finalDataValue.append(value)
     }
     
-    
+//    let dataArray = [isDate:finalDataValue]
+//    let monthArray = [isMonth:dataArray]
+//    let yearArray = [isYear:monthArray]
+     Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)").childByAutoId().setValue(finalDataValue)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
