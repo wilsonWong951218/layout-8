@@ -34,6 +34,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         updateButton.addTarget(self, action: #selector(handleUpdataButton), for: .touchUpInside)
+        updateButton.layer.cornerRadius = 15
         
         //table view refresh
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -56,8 +57,15 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
             
         }
         
+      
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.getDataValueRefreshNonObjc()
+        }
+        
+    }
     // after refresh UI-tableView get all UI-collectionView data in to array
     @objc func getDataValue(sender:AnyObject){
         getDataValueRefreshNonObjc()
@@ -128,6 +136,13 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
             }
             finalDataValue.removeAll()
         }
+        
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        array.removeAll()
+        tableView.reloadData()
+        totalAmount.text = "總金額：NT$0"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -142,12 +157,12 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         cell.lbFood.text = array[indexPath.row][indexCount+1]
         cell.lbPrice.text = array[indexPath.row][indexCount+2]
         cell.lbOrdered.text = array[indexPath.row][indexCount+3]
-        
-        guard let lbPrice = cell.lbPrice.text else {return cell}
-        guard let lbOrdered = cell.lbOrdered.text else {return cell}
-        totalAmountCount += Float(lbOrdered)! * Float(lbPrice)!
+        for index in 0..<array.count{
+        totalAmountCount += Float(array[index][indexCount+3])! * Float(array[index][indexCount+2])!
+        //totalAmountCount += Float(lbOrdered)! * Float(lbPrice)!
+        }
         totalAmount.text = "總金額：NT$\(String(totalAmountCount))"
-        
+        totalAmountCount = 0
         return cell
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

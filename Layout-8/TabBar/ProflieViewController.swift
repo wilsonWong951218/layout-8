@@ -26,7 +26,9 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
         logoutButton.addTarget(self, action: #selector(handleLogOut), for: .touchUpInside)
         getDBvalueUser()
         getDBvalueShop()
-       
+        getCount()
+        
+  
         // Do any additional setup after loading the view.
     }
 
@@ -34,11 +36,16 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
         let addShopName = segue.destination as! PopManuViewController
         guard let shopNumber = tableViewShop.indexPathForSelectedRow?.row else {return}
         addShopName.myShopName = shopName[shopNumber]
-        //addShopName.myShopFoodCount = shopFoodCount
-        //print(shopFoodCount)
 
     }
     
+    
+    fileprivate func getCount(){
+        guard let shopNumberCount = tableViewShop.indexPathForSelectedRow?.row else {return}
+        Database.database().reference().child("shopFOOD").child(shopName[shopNumberCount]).observeSingleEvent(of: DataEventType.value) { (snapshot) in
+            self.shopFoodCount = Int(snapshot.childrenCount)
+        }
+    }
     @objc func handleLogOut(){
         try! Auth.auth().signOut()
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -55,7 +62,7 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
                 self.shopName.append(food.key)
             }
             self.tableViewShop.reloadData()
-            
+         
         }) { (error) in
             print("Error:\(error)")
         }
@@ -113,13 +120,8 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        Database.database().reference().child("shopFOOD").child(shopName[indexPath.row]).observeSingleEvent(of: .value) { (snapshot) in
-//            self.shopFoodCount = Int(snapshot.childrenCount)
-//            print("FristViewCount:",self.shopFoodCount)
-//        }
-
-            performSegue(withIdentifier: "shopOneManu", sender: nil)
-      
+        getCount()
+     performSegue(withIdentifier: "shopOneManu", sender: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

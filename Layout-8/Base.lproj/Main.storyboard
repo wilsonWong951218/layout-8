@@ -30,8 +30,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXK-9v-QLj">
-                                        <rect key="frame" x="293" y="10" width="62" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXK-9v-QLj">
+                                        <rect key="frame" x="253" y="10" width="103" height="50"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="確認訂單">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,7 +43,7 @@
                                     <constraint firstItem="33o-2J-QdN" firstAttribute="leading" secondItem="zFg-Ta-qjP" secondAttribute="leading" constant="45" id="2zh-Su-Xq4"/>
                                     <constraint firstAttribute="bottom" secondItem="mXK-9v-QLj" secondAttribute="bottom" constant="10" id="XAj-t9-aax"/>
                                     <constraint firstItem="mXK-9v-QLj" firstAttribute="top" secondItem="zFg-Ta-qjP" secondAttribute="top" constant="10" id="g9B-t6-cDX"/>
-                                    <constraint firstAttribute="trailing" secondItem="mXK-9v-QLj" secondAttribute="trailing" constant="20" id="gn3-Il-gmF"/>
+                                    <constraint firstAttribute="trailing" secondItem="mXK-9v-QLj" secondAttribute="trailing" constant="19" id="gn3-Il-gmF"/>
                                     <constraint firstItem="33o-2J-QdN" firstAttribute="top" secondItem="zFg-Ta-qjP" secondAttribute="top" constant="10" id="m0L-dR-CXd"/>
                                     <constraint firstAttribute="bottom" secondItem="33o-2J-QdN" secondAttribute="bottom" constant="10" id="ruU-ZU-icD"/>
                                     <constraint firstAttribute="height" constant="70" id="tV5-sD-iXq"/>
@@ -119,7 +119,7 @@
                         <outlet property="tabBar" destination="1Bt-8p-daZ" id="jKa-Zt-KBl"/>
                         <outlet property="tableView" destination="lD1-3W-ePZ" id="JYF-eT-9uz"/>
                         <outlet property="totalAmount" destination="33o-2J-QdN" id="bgh-DX-DIX"/>
-                        <outlet property="updateButton" destination="ixC-jH-F4n" id="TSS-ME-slb"/>
+                        <outlet property="updateButton" destination="mXK-9v-QLj" id="xI4-lr-5lE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6RF-k1-HGk" userLabel="First Responder" sceneMemberID="firstResponder"/>

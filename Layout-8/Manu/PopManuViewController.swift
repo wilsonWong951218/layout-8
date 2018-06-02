@@ -12,6 +12,9 @@ class PopManuViewController: UIViewController {
     let MyCollectionViewCellId: String = "MyCollectionViewCell"
     var getOrderData = [OrderData]()
     
+    
+    var foodNameArray = [String]()
+    var foodPriceArray = [String]()
     var foodName = [String]()
     var foodPrice = [String]()
     var myShopName = String()
@@ -19,7 +22,7 @@ class PopManuViewController: UIViewController {
     var labelCount = UILabel()
     var counter = 0
     var counter1 = 0
-    lazy var myShopFoodCount = Int()
+    var myShopFoodCount = Int()
     var orderData = [Int]()
     var countValue = 0
     @IBOutlet weak var confirmButton: UIButton!
@@ -30,6 +33,7 @@ class PopManuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        database()
         getFoodCount()
         backButton.addTarget(self, action: #selector(backToShop), for: .touchUpInside)
         let nibCell = UINib(nibName: MyCollectionViewCellId, bundle: nil)
@@ -40,28 +44,33 @@ class PopManuViewController: UIViewController {
         
     }
     
-    
+    func database(){
+        Database.database().reference().child("shopFOOD").child(myShopName).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.foodNameArray = self.getFoodName(snapshot)
+            self.foodPriceArray = self.getFoodPrice(snapshot)
+   
+        }) { (error) in
+            print("Error get food detail:",error)
+        }
+    }
     @objc func handleConfirm(){
         print("Save data in userdefault")
         var dataArray = [[String]]()
         
         for index in 0..<getOrderData.count{
             dataArray.append([getOrderData[index].shopNameData,getOrderData[index].foodNameData,getOrderData[index].foodPriceData,getOrderData[index].orderedCount])
-           // let dictionary:[String:Any] = [getOrderData[index].foodNameData:array]
-            
-           // let dictionary = [[getOrderData[index].foodNameData],array]
-           // dataArray.append(array)
+
         }
         
         UserDefaults.standard.set(dataArray, forKey: myShopName)
-//        UserDefaults.standard.removeObject(forKey:myShopName)
-//        UserDefaults.standard.set(orderData, forKey:myShopName)
+       
         UserDefaults.standard.synchronize()
         dataArray.removeAll()
         
     }
     
     func getFoodCount(){
+        print(myShopName)
         Database.database().reference().child("shopFOOD").child(myShopName).observeSingleEvent(of: .value) { (snapshot) in
             self.myShopFoodCount = Int(snapshot.childrenCount)
             print("third:",self.myShopFoodCount)
@@ -102,9 +111,7 @@ class PopManuViewController: UIViewController {
                 orderData[index] = value + 1
             }
         }
-        
         collectionView.reloadData()
-        
     }
     
     @objc func touchSubButton(_ sender:UIButton){
@@ -132,13 +139,14 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if countValue < 1 {
-            for _ in 0...myShopFoodCount+1 {
+
+        if counter <= 1{
+            for _ in 0..<myShopFoodCount{
                 orderData.append(0)
                 let test = OrderData()
                 getOrderData += [test]
             }
-            countValue += 1
+            counter += 1
         }
         
         return myShopFoodCount
@@ -146,6 +154,18 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCellId, for: indexPath) as! MyCollectionViewCell
+       
+        cell.lbName.text = foodNameArray[indexPath.row]
+        cell.lbPrice.text = "Price:\(foodPriceArray[indexPath.row])"
+        
+        self.getOrderData[indexPath.row].shopNameData = self.myShopName
+        
+        
+        var name = cell.lbName.text!
+        self.getOrderData[indexPath.row].foodNameData = name
+        
+        let price = foodPriceArray[indexPath.row]
+        self.getOrderData[indexPath.row].foodPriceData = price
         
         cell.addButton.tag = indexPath.row
         cell.addButton.addTarget(self, action: #selector(touchAddButton), for: .touchUpInside)
@@ -157,31 +177,10 @@ extension PopManuViewController: UICollectionViewDelegate, UICollectionViewDataS
             self.getOrderData[indexPath.row].orderedCount = count
         }
         
-        
-        
-        Database.database().reference().child("shopFOOD").child(myShopName).observeSingleEvent(of: .value, with: { (snapshot) in
-            var foodNameArray = self.getFoodName(snapshot)
-            var foodPriceArray = self.getFoodPrice(snapshot)
-            cell.lbName.text = foodNameArray[indexPath.row]
-            cell.lbPrice.text = "Price:\(foodPriceArray[indexPath.row])"
-            
-            self.getOrderData[indexPath.row].shopNameData = self.myShopName
-            
-
-            guard let name = cell.lbName.text else {return}
-            self.getOrderData[indexPath.row].foodNameData = name
-            
-            let price = foodPriceArray[indexPath.row]
-            self.getOrderData[indexPath.row].foodPriceData = price
-            
-        }) { (error) in
-            print("Error get food detail:",error)
-        }
-        
         return cell
     }
     
-   
+    
     
     
 }
