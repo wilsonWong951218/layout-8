@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item3-->
+        <!--Order Manu View Controller-->
         <scene sceneID="nsM-19-Yle">
             <objects>
                 <viewController id="hTi-Wg-RLe" customClass="OrderManuViewController" customModule="Layout_8" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,7 +114,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="279-8e-huX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Item3" id="1Bt-8p-daZ"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="cart" selectedImage="cart (1)" id="1Bt-8p-daZ"/>
                     <connections>
                         <outlet property="tabBar" destination="1Bt-8p-daZ" id="jKa-Zt-KBl"/>
                         <outlet property="tableView" destination="lD1-3W-ePZ" id="JYF-eT-9uz"/>
@@ -583,11 +583,11 @@
             </objects>
             <point key="canvasLocation" x="-1031.2" y="-267.48768472906403"/>
         </scene>
-        <!--Item 1-->
+        <!--Navigation Controller-->
         <scene sceneID="6rf-Hv-2bO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="5QL-pH-YtF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Phh-hX-NXB"/>
+                    <tabBarItem key="tabBarItem" title="" image="dish (1)" selectedImage="dish" id="Phh-hX-NXB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hFp-w2-5Y2">
                         <autoresizingMask key="autoresizingMask"/>
@@ -603,6 +603,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cart" width="32" height="32"/>
+        <image name="cart (1)" width="32" height="32"/>
+        <image name="dish" width="32" height="32"/>
+        <image name="dish (1)" width="32" height="32"/>
         <image name="imageView:ncm-GZ-ueF:image" width="150" height="150">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI

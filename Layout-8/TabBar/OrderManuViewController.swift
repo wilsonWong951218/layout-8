@@ -118,7 +118,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         let isMonth = month.string(from: now)
         let isDate = date.string(from: now)
         //let isTime = time.string(from: now)
-        let ref = Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)")
+        let ref = Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)").child("Unserve")
         let postRefKey = ref.childByAutoId()
         
         //sort shop/food data and update to firebase
