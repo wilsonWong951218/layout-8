@@ -48,6 +48,10 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
     }
     @objc func handleLogOut(){
         try! Auth.auth().signOut()
+        if let appDomain = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: appDomain)
+            UserDefaults.standard.synchronize()
+        }
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
         self.present(vc, animated: true, completion: nil)
@@ -58,7 +62,7 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
             print(snapshot.value ?? "")
             for food in (snapshot.children.allObjects as! [DataSnapshot]){
                 
-                //print("Food:", food.key)
+                print("Food:", food.key)
                 self.shopName.append(food.key)
             }
             self.tableViewShop.reloadData()

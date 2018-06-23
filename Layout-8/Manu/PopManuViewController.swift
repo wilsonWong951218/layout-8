@@ -67,6 +67,17 @@ class PopManuViewController: UIViewController {
         UserDefaults.standard.synchronize()
         dataArray.removeAll()
         
+        let myAlert = UIAlertController(title: "Thank For Order!", message: nil, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "Continue Shopping", style: .default) { (action:UIAlertAction) -> () in
+            self.back()
+        }
+        myAlert.addAction(doneAction)
+        self.present(myAlert,animated: true,completion: nil)
+         
+      
+    }
+    func back(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     func getFoodCount(){

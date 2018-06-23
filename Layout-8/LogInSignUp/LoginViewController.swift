@@ -20,7 +20,15 @@ class LoginViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+        emailText.becomeFirstResponder()
+        passwordText.becomeFirstResponder()
+
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emailText.resignFirstResponder()
+        passwordText.resignFirstResponder()
+       
     }
     
     func setUpUI(){

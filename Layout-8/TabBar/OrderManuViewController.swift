@@ -61,7 +61,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.getDataValueRefreshNonObjc()
         }
         
@@ -122,7 +122,8 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         let postRefKey = ref.childByAutoId()
         
         //sort shop/food data and update to firebase
-        var myShop = orderData[0].shopNameData
+        if orderData.count != 0{
+         var myShop = orderData[0].shopNameData
         for index in 0..<orderData.count{
             if index == 0{
                 postRefKey.updateChildValues(orderData[index].dictionaryCreateShop())
@@ -143,6 +144,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         array.removeAll()
         tableView.reloadData()
         totalAmount.text = "總金額：NT$0"
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
