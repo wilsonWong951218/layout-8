@@ -49,7 +49,11 @@ class LoginViewController: UIViewController {
             }
             print("Login Succese:",user ?? "")
             self.errorLabel.text = "Login Succese"
-            self.performSegue(withIdentifier: "loginShowTabBarController", sender: nil)
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "MyTabBarViewController") as! MyTabBarViewController
+            self.present(vc, animated: true, completion: nil)
+            
         }
     
     }

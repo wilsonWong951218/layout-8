@@ -61,7 +61,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.getDataValueRefreshNonObjc()
         }
         
@@ -120,6 +120,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         //let isTime = time.string(from: now)
         let ref = Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)").child("Unserve")
         let postRefKey = ref.childByAutoId()
+        let orderId = postRefKey.key
         
         //sort shop/food data and update to firebase
         if orderData.count != 0{
@@ -144,6 +145,11 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         array.removeAll()
         tableView.reloadData()
         totalAmount.text = "總金額：NT$0"
+        let myAlert = UIAlertController(title: "Thank For Order!", message: nil, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "訂單號碼：\(orderId.suffix(5))", style: .cancel)
+        myAlert.addAction(doneAction)
+        self.present(myAlert,animated: true,completion: nil)
+            
         }
     }
     

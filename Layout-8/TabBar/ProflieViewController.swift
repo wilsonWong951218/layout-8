@@ -21,8 +21,10 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profilePic.layer.cornerRadius = 160/2
-        profilePic.clipsToBounds = true
+        profilePic.layer.cornerRadius = profilePic.frame.width/2
+        profilePic.layer.masksToBounds = true
+        profilePic.layer.borderColor = UIColor.black.cgColor
+        profilePic.layer.borderWidth = 3
         logoutButton.addTarget(self, action: #selector(handleLogOut), for: .touchUpInside)
         getDBvalueUser()
         getDBvalueShop()

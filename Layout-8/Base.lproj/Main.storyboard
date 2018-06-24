@@ -442,7 +442,7 @@
                         <outlet property="errorLabel" destination="bGb-qL-mfo" id="691-PO-lMY"/>
                         <outlet property="loginButton" destination="9Gg-WA-Msu" id="lQ4-5i-iS8"/>
                         <outlet property="passwordText" destination="iSo-ii-6Mh" id="caS-Dh-KR1"/>
-                        <segue destination="v5z-La-t3b" kind="show" identifier="loginShowTabBarController" id="6OP-SI-3pj"/>
+                        <segue destination="v5z-La-t3b" kind="showDetail" identifier="loginShowTabBarController" id="6OP-SI-3pj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnq-qA-iCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2232,6 +2232,6 @@ EgABahcAAWofAAF7iwABe40AAXuSAAF7oAABe6QAAXurAAF7sAABe70AAXvAAAF7zQABe9IAAXvaAAF7
         <image name="plus_photo" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dSG-mx-iqQ"/>
+        <segue reference="6OP-SI-3pj"/>
     </inferredMetricsTieBreakers>
 </document>
