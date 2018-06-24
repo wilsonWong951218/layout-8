@@ -57,7 +57,7 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
             
         }
         
-      
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -121,34 +121,45 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         let ref = Database.database().reference().child("OrderList").child("\(isYear)").child("\(isMonth)").child("\(isDate)").child("Unserve")
         let postRefKey = ref.childByAutoId()
         let orderId = postRefKey.key
-        
+        if var orderIdArray = UserDefaults.standard.array(forKey: "OrderID"){
+            orderIdArray.append(orderId)
+            UserDefaults.standard.set(orderIdArray, forKey: "OrderID")
+        }else{
+            var arrayId = [String]()
+            arrayId.append(orderId)
+            UserDefaults.standard.set(arrayId, forKey: "OrderID")
+        }
         //sort shop/food data and update to firebase
         if orderData.count != 0{
-         var myShop = orderData[0].shopNameData
-        for index in 0..<orderData.count{
-            if index == 0{
-                postRefKey.updateChildValues(orderData[index].dictionaryCreateShop())
+            var myShop = orderData[0].shopNameData
+            for index in 0..<orderData.count{
+                if index == 0{
+                    postRefKey.updateChildValues(orderData[index].dictionaryCreateShop())
+                }
+                else if myShop == orderData[index].shopNameData{
+                    postRefKey.child(orderData[index].shopNameData).updateChildValues(orderData[index].dictionaryCreate())
+                }
+                else{
+                    myShop = orderData[index].shopNameData
+                    postRefKey.updateChildValues(orderData[index].dictionaryCreateShop())
+                }
+                finalDataValue.removeAll()
             }
-            else if myShop == orderData[index].shopNameData{
-                postRefKey.child(orderData[index].shopNameData).updateChildValues(orderData[index].dictionaryCreate())
+            
+            //        let domain = Bundle.main.bundleIdentifier!
+            //
+            //        UserDefaults.standard.removePersistentDomain(forName: domain)
+            for index in 0..<shopName.count{
+                UserDefaults.standard.removeObject(forKey:"\(shopName[index])")
+                UserDefaults.standard.synchronize()
             }
-            else{
-                myShop = orderData[index].shopNameData
-                postRefKey.updateChildValues(orderData[index].dictionaryCreateShop())
-            }
-            finalDataValue.removeAll()
-        }
-        
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
-        array.removeAll()
-        tableView.reloadData()
-        totalAmount.text = "總金額：NT$0"
-        let myAlert = UIAlertController(title: "Thank For Order!", message: nil, preferredStyle: .alert)
-        let doneAction = UIAlertAction(title: "訂單號碼：\(orderId.suffix(5))", style: .cancel)
-        myAlert.addAction(doneAction)
-        self.present(myAlert,animated: true,completion: nil)
+            array.removeAll()
+            tableView.reloadData()
+            totalAmount.text = "總金額：NT$0"
+            let myAlert = UIAlertController(title: "Thank For Order!", message: nil, preferredStyle: .alert)
+            let doneAction = UIAlertAction(title: "訂單號碼：\(orderId.suffix(5))", style: .cancel)
+            myAlert.addAction(doneAction)
+            self.present(myAlert,animated: true,completion: nil)
             
         }
     }
@@ -166,8 +177,8 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         cell.lbPrice.text = array[indexPath.row][indexCount+2]
         cell.lbOrdered.text = array[indexPath.row][indexCount+3]
         for index in 0..<array.count{
-        totalAmountCount += Float(array[index][indexCount+3])! * Float(array[index][indexCount+2])!
-        //totalAmountCount += Float(lbOrdered)! * Float(lbPrice)!
+            totalAmountCount += Float(array[index][indexCount+3])! * Float(array[index][indexCount+2])!
+            //totalAmountCount += Float(lbOrdered)! * Float(lbPrice)!
         }
         totalAmount.text = "總金額：NT$\(String(totalAmountCount))"
         totalAmountCount = 0
@@ -180,8 +191,8 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
         tableView.reloadData()
         var countTable = 0
         
-       let shopName = array[indexPath.row][0]
-       let foodName = array[indexPath.row][1]
+        let shopName = array[indexPath.row][0]
+        let foodName = array[indexPath.row][1]
         array.remove(at: indexPath.row)
         
         var prefs = UserDefaults.standard.array(forKey:"\(shopName)") as! [[String]]
@@ -190,8 +201,8 @@ class OrderManuViewController: UIViewController ,UITableViewDelegate ,UITableVie
                 && prefs[index_1][1] == "\(foodName)"{
                 prefs[index_1][3] = "0"
                 UserDefaults.standard.set(prefs, forKey: shopName)
-                }
-         
+            }
+            
         }
         countTable += 1
         tableView.deleteRows(at: [indexPath], with: .fade)

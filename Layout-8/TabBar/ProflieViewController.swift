@@ -122,6 +122,9 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = shopName[indexPath.row]
+        
+        cell.textLabel?.highlightedTextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0);
+        
         return cell
     }
     
@@ -129,6 +132,8 @@ class ProflieViewController: UIViewController, UITableViewDelegate ,UITableViewD
         getCount()
      performSegue(withIdentifier: "shopOneManu", sender: nil)
     }
+    
+    
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("cc")

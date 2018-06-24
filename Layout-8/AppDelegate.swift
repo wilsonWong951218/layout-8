@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // set up your background color view
+        let colorView = UIView()
+        colorView.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.2666666667, blue: 0.2549019608, alpha: 1)
+        
+        
+        // use UITableViewCell.appearance() to configure
+        // the default appearance of all UITableViewCells in your app
+        UITableViewCell.appearance().selectedBackgroundView = colorView
+        
         // Override point for customization after application launch.
         FirebaseApp.configure()
         if Auth.auth().currentUser != nil{

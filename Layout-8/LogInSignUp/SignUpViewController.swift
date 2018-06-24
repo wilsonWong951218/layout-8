@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         backToLoging.addTarget(self, action: #selector(handleBackToLogIn), for: .touchUpInside)
         // Do any additional setup after loading the view.
         
-        signUpButton.layer.cornerRadius = 2
+        signUpButton.layer.cornerRadius = 11
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -170,10 +170,10 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         if let emailTextIsField = emailText.text , let userNameTextIsField = userNameText.text,let userPasswordTextIsField = userPasswordText.text,let userPasswordComfirmTextIsField = userPasswordTextComfirm.text{
             
             if emailTextIsField.count > 0 && userPasswordTextIsField.count > 0 &&  userNameTextIsField.count > 0 && userPasswordComfirmTextIsField.count > 0{
-                signUpButton.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+                signUpButton.backgroundColor = #colorLiteral(red: 1, green: 0.3882352941, blue: 0.05490196078, alpha: 1)
                 signUpButton.isEnabled = true
             }else{
-                signUpButton.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+                signUpButton.backgroundColor = #colorLiteral(red: 0.4156862745, green: 0.4156862745, blue: 0.4156862745, alpha: 1)
                 signUpButton.isEnabled = false
             }
        
