@@ -38,7 +38,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.12549019610000001" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.16078431372549021" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="33o-2J-QdN" firstAttribute="leading" secondItem="zFg-Ta-qjP" secondAttribute="leading" constant="45" id="2zh-Su-Xq4"/>
                                     <constraint firstAttribute="bottom" secondItem="mXK-9v-QLj" secondAttribute="bottom" constant="10" id="XAj-t9-aax"/>
@@ -90,7 +90,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.59607843137254901" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zFg-Ta-qjP" secondAttribute="trailing" id="4jn-bc-HIJ"/>
                             <constraint firstItem="lD1-3W-ePZ" firstAttribute="leading" secondItem="279-8e-huX" secondAttribute="leading" id="CSr-h4-DPE"/>
@@ -659,7 +659,7 @@
             </objects>
             <point key="canvasLocation" x="-386" y="163"/>
         </scene>
-        <!--Item-->
+        <!--History TableVC-->
         <scene sceneID="0ih-TR-BoT">
             <objects>
                 <viewController id="2NB-la-shk" customClass="HistoryTableVC" customModule="Layout_8" customModuleProvider="target" sceneMemberID="viewController">
@@ -669,17 +669,17 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歷史紀錄" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUc-CM-gfJ">
                                 <rect key="frame" x="0.0" y="44" width="375" height="70"/>
-                                <color key="backgroundColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.18431372549019609" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="ZQ4-5L-IqM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uld-9D-aGy">
                                 <rect key="frame" x="0.0" y="122" width="375" height="607"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.066666666666666666" green="0.60392156862745094" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" id="OZO-FL-dP4">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -688,6 +688,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.066666666669999999" green="0.60392156860000001" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -696,7 +697,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.60392156862745094" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JUc-CM-gfJ" firstAttribute="top" secondItem="1hX-xY-r63" secondAttribute="top" id="FpP-XN-BHA"/>
                             <constraint firstItem="JUc-CM-gfJ" firstAttribute="trailing" secondItem="Uld-9D-aGy" secondAttribute="trailing" id="PUH-Ak-Rsr"/>
@@ -708,7 +709,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1hX-xY-r63"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="history" selectedImage="history (1)" id="pX2-NI-cZs"/>
+                    <tabBarItem key="tabBarItem" title="" image="history" selectedImage="history (1)" id="pX2-NI-cZs"/>
                     <connections>
                         <outlet property="tableView" destination="Uld-9D-aGy" id="GEX-Sc-uzf"/>
                         <segue destination="JRe-v8-qEw" kind="presentation" identifier="HistoryPop" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Wta-VC-iKo"/>
@@ -731,10 +732,10 @@
                                 <state key="normal" title="Button"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vc-6r-dMA">
-                                <rect key="frame" x="59" y="147" width="256" height="519"/>
+                                <rect key="frame" x="30" y="124" width="315" height="574"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kg1-4F-5Sn">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="519"/>
+                                        <rect key="frame" x="10" y="69" width="295" height="436"/>
                                         <color key="backgroundColor" red="0.19215686274509805" green="0.52156862745098043" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="dataSource" destination="JRe-v8-qEw" id="ZhG-EW-b6a"/>
@@ -742,12 +743,12 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.11372549019607843" green="0.40000000000000002" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Kg1-4F-5Sn" secondAttribute="bottom" id="7hY-Gx-O4E"/>
-                                    <constraint firstItem="Kg1-4F-5Sn" firstAttribute="top" secondItem="1vc-6r-dMA" secondAttribute="top" id="BbX-sf-ORp"/>
-                                    <constraint firstAttribute="trailing" secondItem="Kg1-4F-5Sn" secondAttribute="trailing" id="R07-Xx-Jcf"/>
-                                    <constraint firstItem="Kg1-4F-5Sn" firstAttribute="leading" secondItem="1vc-6r-dMA" secondAttribute="leading" id="YNs-CN-T4P"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kg1-4F-5Sn" secondAttribute="bottom" constant="69" id="7hY-Gx-O4E"/>
+                                    <constraint firstItem="Kg1-4F-5Sn" firstAttribute="top" secondItem="1vc-6r-dMA" secondAttribute="top" constant="69" id="BbX-sf-ORp"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kg1-4F-5Sn" secondAttribute="trailing" constant="10" id="R07-Xx-Jcf"/>
+                                    <constraint firstItem="Kg1-4F-5Sn" firstAttribute="leading" secondItem="1vc-6r-dMA" secondAttribute="leading" constant="10" id="YNs-CN-T4P"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -757,10 +758,10 @@
                             <constraint firstAttribute="bottom" secondItem="5Oi-aS-ZPd" secondAttribute="bottom" id="3Gi-49-Nny"/>
                             <constraint firstItem="5Oi-aS-ZPd" firstAttribute="top" secondItem="SGG-eN-S5t" secondAttribute="top" id="5QW-57-H4X"/>
                             <constraint firstItem="5Oi-aS-ZPd" firstAttribute="leading" secondItem="SGG-eN-S5t" secondAttribute="leading" id="H46-zD-AcA"/>
-                            <constraint firstItem="1vc-6r-dMA" firstAttribute="leading" secondItem="SGG-eN-S5t" secondAttribute="leading" constant="59" id="Vg6-Ge-Q9R"/>
-                            <constraint firstItem="SGG-eN-S5t" firstAttribute="trailing" secondItem="1vc-6r-dMA" secondAttribute="trailing" constant="60" id="n5j-4y-Wbw"/>
-                            <constraint firstItem="SGG-eN-S5t" firstAttribute="bottom" secondItem="1vc-6r-dMA" secondAttribute="bottom" constant="112" id="qYC-xq-iPT"/>
-                            <constraint firstItem="1vc-6r-dMA" firstAttribute="top" secondItem="SGG-eN-S5t" secondAttribute="top" constant="103" id="xWy-g0-Obx"/>
+                            <constraint firstItem="1vc-6r-dMA" firstAttribute="leading" secondItem="SGG-eN-S5t" secondAttribute="leading" constant="30" id="Vg6-Ge-Q9R"/>
+                            <constraint firstItem="SGG-eN-S5t" firstAttribute="trailing" secondItem="1vc-6r-dMA" secondAttribute="trailing" constant="30" id="n5j-4y-Wbw"/>
+                            <constraint firstItem="SGG-eN-S5t" firstAttribute="bottom" secondItem="1vc-6r-dMA" secondAttribute="bottom" constant="80" id="qYC-xq-iPT"/>
+                            <constraint firstItem="1vc-6r-dMA" firstAttribute="top" secondItem="SGG-eN-S5t" secondAttribute="top" constant="80" id="xWy-g0-Obx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SGG-eN-S5t"/>
                     </view>
