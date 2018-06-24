@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         colorView.backgroundColor = #colorLiteral(red: 0.1019607843, green: 0.2666666667, blue: 0.2549019608, alpha: 1)
         
         
-        // use UITableViewCell.appearance() to configure
+                // use UITableViewCell.appearance() to configure
         // the default appearance of all UITableViewCells in your app
         UITableViewCell.appearance().selectedBackgroundView = colorView
         
@@ -32,6 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "MyTabBarViewController") as UIViewController
             window?.rootViewController = vc
+        }else{
+            if var orderIdArray = UserDefaults.standard.array(forKey: "OrderID"){
+                UserDefaults.standard.set(orderIdArray, forKey: "OrderID")
+            }else{
+                var arrayId = [String]()
+                UserDefaults.standard.set(arrayId, forKey: "OrderID")
+            }
+            
+
         }
         return true
     }

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A8D63DB20E02DA200A85A78 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D63DA20E02DA200A85A78 /* DesignableTextField.swift */; };
-		9A8D63DF20E0419900A85A78 /* HistoryPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D63DD20E0419800A85A78 /* HistoryPopVC.swift */; };
-		9A8D63E020E0419900A85A78 /* HistoryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D63DE20E0419900A85A78 /* HistoryTableVC.swift */; };
+		E20131E820E0449400FA5EC0 /* HistoryPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20131E620E0449400FA5EC0 /* HistoryPopVC.swift */; };
+		E20131E920E0449400FA5EC0 /* HistoryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20131E720E0449400FA5EC0 /* HistoryTableVC.swift */; };
+		E20131EB20E044E100FA5EC0 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20131EA20E044E100FA5EC0 /* DesignableTextField.swift */; };
 		E2125FAE20AF137400785619 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2125FAD20AF137400785619 /* MyCollectionViewCell.swift */; };
 		E2125FB020AF137A00785619 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2125FAF20AF137A00785619 /* MyCollectionViewCell.xib */; };
 		E2125FB520AFE95300785619 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2125FB420AFE95300785619 /* LoginViewController.swift */; };
@@ -32,10 +32,10 @@
 /* Begin PBXFileReference section */
 		5BAC9B0CD1B47E122B2EE5A2 /* Pods-Layout-8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Layout-8.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Layout-8/Pods-Layout-8.debug.xcconfig"; sourceTree = "<group>"; };
 		757E5D11E2ECD49B75CB4319 /* Pods_Layout_8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Layout_8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A8D63DA20E02DA200A85A78 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DesignableTextField.swift; path = ../../../../.Trash/DesignableTextField.swift; sourceTree = "<group>"; };
-		9A8D63DD20E0419800A85A78 /* HistoryPopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryPopVC.swift; path = ../../../HistoryPopVC.swift; sourceTree = "<group>"; };
-		9A8D63DE20E0419900A85A78 /* HistoryTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableVC.swift; path = ../../../HistoryTableVC.swift; sourceTree = "<group>"; };
 		D09BB94C54AF76DE44AF7676 /* Pods-Layout-8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Layout-8.release.xcconfig"; path = "Pods/Target Support Files/Pods-Layout-8/Pods-Layout-8.release.xcconfig"; sourceTree = "<group>"; };
+		E20131E620E0449400FA5EC0 /* HistoryPopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryPopVC.swift; sourceTree = "<group>"; };
+		E20131E720E0449400FA5EC0 /* HistoryTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableVC.swift; sourceTree = "<group>"; };
+		E20131EA20E044E100FA5EC0 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		E2125FAD20AF137400785619 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2125FAF20AF137A00785619 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		E2125FB420AFE95300785619 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -85,11 +85,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9A8D63DC20E0417B00A85A78 /* History */ = {
+		E20131E520E0449400FA5EC0 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				9A8D63DD20E0419800A85A78 /* HistoryPopVC.swift */,
-				9A8D63DE20E0419900A85A78 /* HistoryTableVC.swift */,
+				E20131E620E0449400FA5EC0 /* HistoryPopVC.swift */,
+				E20131E720E0449400FA5EC0 /* HistoryTableVC.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				E21E5770209DE36E0052325F /* AppDelegate.swift */,
-				9A8D63DC20E0417B00A85A78 /* History */,
+				E20131E520E0449400FA5EC0 /* History */,
 				E2125FB620AFF0B500785619 /* Manu */,
 				E2CB570620AC83A700FA830D /* TabBar */,
 				E2125FB120AF143300785619 /* FoodCell */,
@@ -163,7 +163,7 @@
 		E2FFDDAD20AC6E4300706CB3 /* LogInSignUp */ = {
 			isa = PBXGroup;
 			children = (
-				9A8D63DA20E02DA200A85A78 /* DesignableTextField.swift */,
+				E20131EA20E044E100FA5EC0 /* DesignableTextField.swift */,
 				E2FFDDAE20AC6E6000706CB3 /* SignUpViewController.swift */,
 				E2125FB420AFE95300785619 /* LoginViewController.swift */,
 			);
@@ -295,16 +295,16 @@
 				E22FF5D220B7D5F0004AE477 /* MyTabBarViewController.swift in Sources */,
 				E22FF5CF20B6C69F004AE477 /* OrderManuViewController.swift in Sources */,
 				E2125FB520AFE95300785619 /* LoginViewController.swift in Sources */,
+				E20131EB20E044E100FA5EC0 /* DesignableTextField.swift in Sources */,
 				E2FFDDAF20AC6E6000706CB3 /* SignUpViewController.swift in Sources */,
-				9A8D63DB20E02DA200A85A78 /* DesignableTextField.swift in Sources */,
 				E2125FAE20AF137400785619 /* MyCollectionViewCell.swift in Sources */,
 				E22FF5D520B9159F004AE477 /* MyTableViewCell.swift in Sources */,
 				E22FF5D820B9C3B1004AE477 /* OrderData.swift in Sources */,
 				E21E5773209DE36E0052325F /* PopManuViewController.swift in Sources */,
+				E20131E920E0449400FA5EC0 /* HistoryTableVC.swift in Sources */,
+				E20131E820E0449400FA5EC0 /* HistoryPopVC.swift in Sources */,
 				E2CB570820AC83C700FA830D /* ProflieViewController.swift in Sources */,
 				E21E5771209DE36E0052325F /* AppDelegate.swift in Sources */,
-				9A8D63E020E0419900A85A78 /* HistoryTableVC.swift in Sources */,
-				9A8D63DF20E0419900A85A78 /* HistoryPopVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

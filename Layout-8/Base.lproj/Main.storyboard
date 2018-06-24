@@ -708,7 +708,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1hX-xY-r63"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="pX2-NI-cZs"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="history" selectedImage="history (1)" id="pX2-NI-cZs"/>
                     <connections>
                         <outlet property="tableView" destination="Uld-9D-aGy" id="GEX-Sc-uzf"/>
                         <segue destination="JRe-v8-qEw" kind="presentation" identifier="HistoryPop" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Wta-VC-iKo"/>
@@ -733,9 +733,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vc-6r-dMA">
                                 <rect key="frame" x="59" y="147" width="256" height="519"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kg1-4F-5Sn">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kg1-4F-5Sn">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="519"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.19215686274509805" green="0.52156862745098043" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="dataSource" destination="JRe-v8-qEw" id="ZhG-EW-b6a"/>
                                             <outlet property="delegate" destination="JRe-v8-qEw" id="eTo-KB-k4s"/>
@@ -780,6 +780,8 @@
         <image name="dish" width="32" height="32"/>
         <image name="dish (1)" width="32" height="32"/>
         <image name="email" width="980" height="980"/>
+        <image name="history" width="32" height="32"/>
+        <image name="history (1)" width="32" height="32"/>
         <image name="imageView:ncm-GZ-ueF:image" width="150" height="150">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI
